@@ -1,0 +1,13 @@
+---
+
+# TOOO: should we install tmu from sources?
+- name: Installing tmux from sources
+  shell:
+    cmd: curl https://github.com/tmux/latest.tgz
+
+- name: Uncompress tmux tarball
+  tarball: tar zxvf latest.tgz
+
+- name: Compiling...
+  shell:
+    cmd: ./configure --prefix=$HOME/.local/bin --with-XXXX

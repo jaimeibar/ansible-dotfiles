@@ -1,0 +1,28 @@
+---
+
+- name: Install zsh
+  apt:
+    name: zsh
+    package: latest
+    state: installed
+
+# zsh plugin manager to install?
+# prezto
+# oh-my-zshell
+# zplug
+- name: Install zsh plugin manager
+  shell:
+    command: "git clone --recursive https://github.com/sorin-ionescu/prezto.git ${ZDOTDIR:-$HOME}/.zprezto"
+
+- name: Create links to zprezto config files
+  template:
+    src: {{ anisble_dotfiles_home }}/zsh/templates/{{ dotfile }}
+    dest: $HOME/.{{ dotfile }}
+    state: present
+    mode: link
+  loop:
+    {{ zprezto_config_files }}
+
+- name: Install zsh plugins
+  shell:
+    command: "zprezto-update" # Totally guessing here

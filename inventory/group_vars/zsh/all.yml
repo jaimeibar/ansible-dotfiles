@@ -1,0 +1,20 @@
+---
+
+zprezto_config_files:
+  - zlogin
+  - zlogout
+  - zpreztorc
+  - zprofile
+  - zshenv
+  - zshrc
+
+fromsources: true
+
+packages_list:
+  - foo
+  - bar
+
+python_packages:
+  - foo
+  - bar
+

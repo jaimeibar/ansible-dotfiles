@@ -1,0 +1,14 @@
+---
+
+- name: Install tmuxinator
+  gem:
+    name: tmuxinator
+    package: latest
+    state: installed
+
+- name: Create link to tmuxinator config files
+  file:
+    src: {{ anisble_dotfiles_home }}/tmuxinator/files/*.yml
+    dest: $HOME/.tmuxinator/{{ item }}
+    state: link
+  loop_glob: {{ anisble_dotfiles_home }}/tmuxinator/files/*.yml # Is loop_glob the right name here? I don't think so.

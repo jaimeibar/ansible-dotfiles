@@ -1,0 +1,27 @@
+---
+
+- name: Create links for common settings
+  file:
+    src: {{ ansible_dotfiles_home }}/common/.aliases
+    dest: $HOME/.aliases
+    state: link
+
+- name: Install colorls gem
+  gem:
+    name: colorls
+    state: latest
+
+- name: Install packages
+  apt:
+    name: {{ item }}
+    state: latest
+  loop:
+    {{ packages_list }}
+
+- name: Install Python packages
+  pip:
+    name: {{ item }}
+    state: latest
+    userfolder: true #  We don't want to install this systemwide
+  loop:
+    {{ python_packages }}

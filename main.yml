@@ -1,0 +1,14 @@
+---
+
+- name: Install common roles
+  hosts: localhost
+  roles:
+    - vim
+    - zsh
+
+- name: Install tmux and tmuxinator
+  hosts: localhost
+  roles:
+    - tmux
+    - tmuxinator
+  when: ansible_os_family == 'debian'

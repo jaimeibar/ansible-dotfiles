@@ -1,0 +1,27 @@
+---
+
+# TOOO: should we install tmux from sources?
+- name: Install tmux
+  apt:
+    name: tmux
+    package: latest
+    state: installed
+  when: not fromsources
+
+- include: fromsources.yml
+  when: {{ fromsources | defined }}
+
+- name: Install tmux plugin manager
+  shell:
+    command: "wget https://github.com/tpm"
+
+- name: Create link to tmux config file
+  file:
+    src: {{ anisble_dotfiles_home }}/tmux/tmux.conf
+    dest: $HOME/.tmux.conf
+    state: present
+    mode: link
+
+- name: Install tmux plugins
+  shell:
+    command: "tpm install plugins" # Totally guessing here

@@ -1,0 +1,8 @@
+TODO list:
+  - Install brew
+  - Update PATH
+  - Install tmux on Linux only as we're using iTerm on Mac
+  - gtk settings(dconf [set | get] ...)
+  - apt packages
+  - pip package
+  - gitcrypt
